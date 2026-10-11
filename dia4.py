@@ -1,10 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
+from urllib.parse import urljoin
 import pandas as pd
 
 URL = "https://books.toscrape.com"
 
-r = requests.get(URL, timeout=10)
+r = requests.get(URL, timeout=30)
 r.encoding = "utf-8"  # para que el símbolo £ salga bien
 sopa = BeautifulSoup(r.text, "html.parser")
 
@@ -24,10 +25,19 @@ for item in sopa.select("article.product_pod"):
     clase_estrellas = item.select_one("p.star-rating")["class"][1]
     calificacion = ESTRELLAS[clase_estrellas]
 
+    # La disponibilidad está en la página de cada libro: entramos al detalle
+    href = item.h3.a["href"]
+    url_libro = urljoin(URL + "/", href)
+    rd = requests.get(url_libro, timeout=30)
+    rd.encoding = "utf-8"
+    sopa_detalle = BeautifulSoup(rd.text, "html.parser")
+    disponibilidad = sopa_detalle.select_one("p.instock.availability").get_text(strip=True)
+
     libros.append({
         "titulo": titulo,
         "precio": precio,
         "calificacion": calificacion,
+        "disponibilidad": disponibilidad,
     })
 
 # Armamos la tabla, ordenamos por precio y guardamos en Excel
