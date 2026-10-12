@@ -23,6 +23,7 @@ Un archivo Excel (por defecto `catalogo.xlsx`) con 2 hojas:
 ## Instalación (paso a paso)
 
 1. Descargue o clone este proyecto y entre a la carpeta:
+   `git clone https://github.com/Dominguezkev/scraping-proyecto.git`
    `cd scraping-proyecto`
 2. Cree un entorno virtual (recomendado):
    `python3 -m venv venv`
@@ -59,15 +60,14 @@ Opciones:
 ```text
 Página 1/2...
 Página 2/2...
-  categoria
-Fiction         15
-Poetry          10
-...
-Listo: 40 libros en catalogo.xlsx (45 s)
+Listo: 40 libros en catalogo.xlsx (el tiempo depende de la conexión)
 ```
+
+Después abra `catalogo.xlsx`: la hoja `Resumen` trae los totales
+y la hoja `Catalogo` el listado completo.
 
 ## Buenas prácticas
 
-- El programa espera `PAUSA` segundos entre pedidos para no saturar el sitio.
+- El programa espera los segundos de `--pausa` entre pedidos para no saturar el sitio.
 - Es un sitio de prueba. En sitios reales, revise el archivo `robots.txt`
   y los términos de uso antes de scrapear.
