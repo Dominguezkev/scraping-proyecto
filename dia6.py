@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
 URL_PAGINA = "https://books.toscrape.com/catalogue/page-{}.html"
-PAGINAS = 2      # para probar. El sitio tiene 50.
+PAGINAS = 50      # para probar. El sitio tiene 50.
 PAUSA = 0.5      # segundos entre pedidos, para no saturar el sitio
 
 ESTRELLAS = {"One": 1, "Two": 2, "Three": 3, "Four": 4, "Five": 5}
