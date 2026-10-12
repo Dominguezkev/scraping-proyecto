@@ -78,6 +78,8 @@ def armar_resumen(tabla):
         "Sin categoría asignada": int((tabla["categoria"] == "Default").sum()),
         "Filas con datos faltantes": int(tabla.isna().any(axis=1).sum()),
     }
+    if "precio_ars" in tabla.columns:
+        datos["Precio promedio (ARS)"] = round(tabla["precio_ars"].mean(), 2)
     return pd.DataFrame(list(datos.items()), columns=["Indicador", "Valor"])
 
 
@@ -93,6 +95,7 @@ def main():
     parser.add_argument("--paginas", type=int, default=2, help="cuántas páginas (máx. 50)")
     parser.add_argument("--pausa", type=float, default=0.5, help="segundos entre pedidos")
     parser.add_argument("--salida", default="catalogo.xlsx", help="nombre del Excel")
+    parser.add_argument("--cotizacion", type=float, default=None, help="cotización libra a ARS, ej. --cotizacion 1500")
     args = parser.parse_args()
 
     inicio = time.time()
@@ -102,6 +105,8 @@ def main():
         return
 
     tabla = pd.DataFrame(libros).sort_values("precio_gbp")
+    if args.cotizacion is not None:
+        tabla["precio_ars"] = (tabla["precio_gbp"] * args.cotizacion).round(2)
     exportar(tabla, args.salida)
     print(f"Listo: {len(tabla)} libros en {args.salida} ({time.time() - inicio:.0f} s)")
 
