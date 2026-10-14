@@ -15,6 +15,12 @@ Un archivo Excel (por defecto `catalogo.xlsx`) con 2 hojas:
   `calificacion`, `stock`, `categoria`, `url`
   (y `precio_ars` si se pasa cotización).
 
+## Video introductorio
+
+Si prefiere ver cómo se usa la herramienta antes de leer los pasos,
+mire el video [Grabación de Scraping](Grabaci%C3%B3n%20de%20Scraping.webm):
+es una introducción que muestra cómo ejecutar el programa y abrir el Excel.
+
 ## Requisitos
 
 - Python 3.10 o superior.
