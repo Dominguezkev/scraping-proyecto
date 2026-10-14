@@ -18,8 +18,8 @@ Un archivo Excel (por defecto `catalogo.xlsx`) con 2 hojas:
 ## Video introductorio
 
 Si prefiere ver cómo se usa la herramienta antes de leer los pasos,
-mire el video [Grabación de Scraping](Grabaci%C3%B3n%20de%20Scraping.webm):
-es una introducción que muestra cómo ejecutar el programa y abrir el Excel.
+mire el [video introductorio](https://drive.google.com/file/d/1g4O0D5zons7ggoFhSE72tw4WNjOajo2d/view?usp=drive_link):
+muestra cómo ejecutar el programa y abrir el Excel.
 
 ## Requisitos
 
