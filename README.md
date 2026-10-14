@@ -66,6 +66,26 @@ Listo: 40 libros en catalogo.xlsx (el tiempo depende de la conexión)
 Después abra `catalogo.xlsx`: la hoja `Resumen` trae los totales
 y la hoja `Catalogo` el listado completo.
 
+## Ejecución en un servidor VPS
+
+1. Instale Python y venv (Ubuntu/Debian):
+   `sudo apt update && sudo apt install -y python3 python3-venv`
+   Verifique con `python3 --version`.
+2. Clone el repo e instale las dependencias:
+   `git clone https://github.com/Dominguezkev/scraping-proyecto.git ~/scraping-proyecto`
+   `cd ~/scraping-proyecto`
+   `python3 -m venv venv`
+   `venv/bin/pip install requests beautifulsoup4 pandas openpyxl`
+3. Pruebe con una página:
+   `venv/bin/python scraper.py --paginas 1 --salida catalogo.xlsx`
+   Tiene que terminar con `Listo: 20 libros en catalogo.xlsx ...`.
+4. Programe una ejecución diaria a las 8:00 con cron:
+   `crontab -e` y agregue esta línea:
+   `0 8 * * * cd ~/scraping-proyecto && ./venv/bin/python scraper.py --paginas 50 >> ~/scraping-proyecto/cron.log 2>&1`
+   Verifique con `crontab -l` y revise `cron.log` al día siguiente.
+   Nota: cron usa un entorno mínimo, por eso se usa la ruta del
+   Python del venv en vez de activar el entorno con `source`.
+
 ## Buenas prácticas
 
 - El programa espera los segundos de `--pausa` entre pedidos para no saturar el sitio.
