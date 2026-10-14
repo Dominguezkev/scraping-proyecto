@@ -91,6 +91,8 @@ y la hoja `Catalogo` el listado completo.
    Verifique con `crontab -l` y revise `cron.log` al día siguiente.
    Nota: cron usa un entorno mínimo, por eso se usa la ruta del
    Python del venv en vez de activar el entorno con `source`.
+   Esta línea de cron fue probada localmente (ejecución programada
+   a 2 minutos con `--paginas 1`: generó el Excel con 20 libros sin errores).
 
 ## Buenas prácticas
 
