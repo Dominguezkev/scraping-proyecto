@@ -23,7 +23,8 @@ muestra cómo ejecutar el programa y abrir el Excel.
 
 ## Requisitos
 
-- Python 3.10 o superior.
+- Python 3.14 (versión usada en este proyecto, compatible con 3.10+).
+- Usá `python3` en Linux/Mac y `python` en Windows si `python3` no te funciona. Ambos deben apuntar a Python 3.14.
 - Conexión a internet.
 
 ## Instalación (paso a paso)
